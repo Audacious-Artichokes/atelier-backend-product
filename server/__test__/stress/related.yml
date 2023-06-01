@@ -2,24 +2,32 @@ config:
   target: "http://127.0.0.1:3500"
   phases:
     - duration: 60
-      arrivalRate: 10
+      arrivalRate: 20
       name: VU - 10
-    - duration: 60
-      arrivalRate: 10
-      rampTo: 50
-      name: VU - 50
-    - duration: 60
-      arrivalRate: 10
-      rampTo: 100
-      name: VU - 100
     - duration: 30
-      arrivalRate: 10
-      rampTo: 150
+      arrivalRate: 20
+      rampTo: 100
+      name: VU - 50
+    - duration: 30
+      arrivalRate: 20
+      rampTo: 300
       name: VU - 150
     - duration: 30
-      arrivalRate: 10
-      rampTo: 200
-      name: VU - 200
+      arrivalRate: 25
+      rampTo: 500
+      name: VU - 500
+    - duration: 120
+      arrivalRate: 50
+      rampTo: 500
+      name: VU - 500
+    - duration: 120
+      arrivalRate: 100
+      rampTo: 1000
+      name: Sustain VU - 1000
+    - duration: 120
+      arrivalRate: 300
+      rampTo: 2000
+      name: Sustain VU - 2000
   payload:
     path: "product.csv"
     fields:
@@ -32,6 +40,14 @@ config:
 scenarios:
   - name: "GET/products"
     flow:
+      - get:
+          url: "/products/{{ productId }}/related"
+          name: "GET/products"
+      - think: 1
+      - get:
+          url: "/products/{{ productId }}/related"
+          name: "GET/products"
+      - think: 1
       - get:
           url: "/products/{{ productId }}/related"
           name: "GET/products"

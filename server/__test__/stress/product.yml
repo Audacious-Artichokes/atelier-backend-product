@@ -23,7 +23,11 @@ config:
     - duration: 120
       arrivalRate: 100
       rampTo: 1000
-      name: Sustain VU - 500
+      name: Sustain VU - 1000
+    - duration: 120
+      arrivalRate: 300
+      rampTo: 2000
+      name: Sustain VU - 2000
   payload:
     path: "product.csv"
     fields:

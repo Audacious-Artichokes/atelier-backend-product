@@ -11,7 +11,7 @@ const numberGenerator = (amount, min, max) => {
   return [...product];
 };
 
-const productIds = numberGenerator(1000, 900000, 1000011);
+const productIds = numberGenerator(10000, 700000, 1000011);
 
 fs.writeFileSync('./product.csv', productIds.join('\n'));
 
