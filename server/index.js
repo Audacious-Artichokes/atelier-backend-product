@@ -17,6 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Set up routes
+app.get('/loaderio-2180ae4142af375a63ed2a6c23ba2673', (req, res) => {
+  res.send('loaderio-2180ae4142af375a63ed2a6c23ba2673');
+});
 routes(app);
 
 module.exports = app;
